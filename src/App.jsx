@@ -1,4 +1,6 @@
 import LandingPage from "./Components/Landing Page/LandingPage"
+import Sidebar from "./Components/Sidebar";
+import Dashboard from "./Dashboard";
 
 import {
   Routes,
@@ -9,7 +11,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<Sidebar />} />
       </Routes>
     </>
   )
