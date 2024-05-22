@@ -1,6 +1,6 @@
-import hero from "../assets/hero.svg";
+import hero from "../../assets/hero.svg";
 
-function Navbar() {
+function LandingPage() {
 	return (
 		<div className="bg-bg-custom">
 			<nav className="pt-7 flex justify-around  items-center">
@@ -41,4 +41,4 @@ function Navbar() {
 	);
 }
 
-export default Navbar;
+export default LandingPage;
