@@ -5,6 +5,8 @@ export default {
 		extend: {
 			colors: {
 				"bg-custom": "#F3F1F9",
+				"custom-black": "#08060E",
+				"clifford": "#C19FF0"
 			},
 			fontSize: {
 				46: "46px",
