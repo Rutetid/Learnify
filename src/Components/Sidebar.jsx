@@ -6,7 +6,7 @@ import folder from "../assets/folder.svg";
 
 function Sidebar() {
 	return (
-		<div className="w-350 h-screen bg-dashboard">
+		<div className="w-350 h-screen bg-sidebar">
 			<div className="flex pt-12 ml-16 gap-2 items-center">
 				<img src={logo} alt="" className="w-16 h-16" />
 				<span className="font-kaushan text-purple-500 text-4xl">Learnify!</span>

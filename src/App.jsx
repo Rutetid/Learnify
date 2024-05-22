@@ -1,20 +1,17 @@
-import LandingPage from "./Components/Landing Page/LandingPage"
+import LandingPage from "./Components/Landing Page/LandingPage";
 import Sidebar from "./Components/Sidebar";
-import Dashboard from "./Dashboard";
+import Dashboard from "./Components/Dashboard";
 
-import {
-  Routes,
-  Route
-} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
-  return (
-    <>
-      <Routes>
-        <Route path="/" element={<Sidebar />} />
-      </Routes>
-    </>
-  )
+	return (
+		<>
+			<Routes>
+				<Route path="/" element={<Dashboard />} />
+			</Routes>
+		</>
+	);
 }
 
-export default App
+export default App;

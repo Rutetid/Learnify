@@ -7,7 +7,7 @@ export default {
 				"bg-custom": "#F3F1F9",
 				"custom-black": "#08060E",
 				clifford: "#C19FF0",
-				sidebar: "E5E0EF",
+				sidebar: "#F6F3FB",
 				dashboard: "#D1C5EC",
 				"accent-dark": "#8E71D0",
 			},
