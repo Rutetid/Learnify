@@ -35,8 +35,8 @@ function Sidebar() {
 				</div>
 			</div>
 
-			<div className="bg-accent-dark rounded-xl" id={page.upgradePanel}>
-				<span className="text-white font-poppins pt-24 pl-5 pr-5 text-xl block text-center">
+			<div className="bg-accent-dark rounded-xl " id={page.upgradePanel}>
+				<span className="text-white font-poppins pt-22 pl-5 pr-5 text-xl block text-center">
 					{" "}
 					Subscription <br /> Coming SOON!
 				</span>
