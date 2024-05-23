@@ -1,0 +1,38 @@
+#upgradePanel{
+    width: 250px;
+    position: absolute;
+    height: 250px;
+    bottom: 30px;
+    align-self: center;
+}
+
+#Sidebar{
+    background-color: #F6F3FB;
+}
+
+.btn{
+    font-size: 20px;
+    font-weight: 500;
+    position: relative;
+    z-index: 99;
+}
+
+#btnHolder{
+    align-self: center;
+}
+
+#btnHolder img{
+    position: relative;
+    z-index: 99;
+}
+
+#btnOver{
+    position: absolute;
+    top: 146px;
+    height: 55px;
+    width: 90%;
+    left: 0px;
+    background-color: #622ADC;
+    z-index: 1;
+    border-radius: 0 10px 10px 0;
+}
