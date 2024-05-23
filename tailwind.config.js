@@ -16,7 +16,9 @@ export default {
 			},
 			width: {
 				350: "330px",
-				middle: "800px"
+				middle: "850px",
+				right: "420px",
+				370: "369px",
 			},
 			fontSize: {
 				46: "46px",

@@ -1,10 +1,12 @@
 import React from "react";
 import baloon from "../../assets/baloon.svg";
+import Course_progress from "./Course_progress";
+
 
 const Dashboard_Middle = () => {
 	return (
 		<div className="bg-dashboard flex flex-col w-middle ">
-			<div className="bg-accent-dark mt-20 ml-8 mr-4 rounded-lg  ">
+			<div className="bg-accent-dark mt-32 ml-8 mr-4 rounded-lg  ">
 				<div className="py-7 text-left pl-7 font-poppins text-white">
 					<span className="text-2xl">Welcome Back! Prakhar 👋</span>
 
@@ -19,27 +21,13 @@ const Dashboard_Middle = () => {
 				Course Progress:
 			</span>
 
-			<div className=" flex">
-				<div className="mt-6 h-60 ml-8 bg-accent-dark rounded-xl mb-9  w-52">
-					<span className="text-white font-poppins pt-24 pl-5 pr-5 text-xl block text-center">
-						{" "}
-						Sample Box
-					</span>
-				</div>
-				<div className="mt-6 h-60 ml-8 bg-accent-dark rounded-xl mb-9  w-52">
-					<span className="text-white font-poppins pt-24 pl-5 pr-5 text-xl block text-center">
-						{" "}
-						Sample Box
-					</span>
-				</div>
-				<div className="mt-6 h-60 ml-8 bg-accent-dark rounded-xl mb-9 mr-9 w-52">
-					<span className="text-white font-poppins pt-24 pl-5 pr-5 text-xl block text-center">
-						{" "}
-						Sample Box
-					</span>
-				</div>
+			<div className=" flex pl-6">
+				<Course_progress />
+				<Course_progress />
+				<Course_progress />
+				
 			</div>
-			<span className="mt-2 font-poppins font-semibold text-sm text-right">
+			<span className="mt-2 font-poppins font-semibold text-sm text-right pr-5">
 				view all -&gt;{" "}
 			</span>
 
@@ -47,7 +35,7 @@ const Dashboard_Middle = () => {
 				Complete Tasks :{" "}
 			</span>
 
-			<div className="bg-accent-dark mt-20 ml-8 mr-4 rounded-lg mb-10 ">
+			<div className="bg-accent-dark mt-6 ml-8 mr-4 rounded-lg mb-10  ">
 				<div className="py-7 text-left pl-7 text-white flex">
 					<div>
 						<span className="font-poppins font-semibold text-2xl">
