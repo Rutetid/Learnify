@@ -1,7 +1,7 @@
 #upgradePanel{
-    width: 250px;
+    width: 220px;
     position: absolute;
-    height: 250px;
+    height: 230px;
     bottom: 30px;
     align-self: center;
 }

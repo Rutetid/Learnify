@@ -11,8 +11,12 @@ export default {
 				dashboard: "#D1C5EC",
 				"accent-dark": "#8E71D0",
 			},
+			spacing: {
+				22: "90px",
+			},
 			width: {
 				350: "330px",
+				middle: "800px"
 			},
 			fontSize: {
 				46: "46px",
