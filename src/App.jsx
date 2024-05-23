@@ -1,6 +1,5 @@
 import LandingPage from "./Components/Landing Page/LandingPage";
 import Dashboard from "./Components/Dashboard Page/Dashboard";
-
 import { Routes, Route } from "react-router-dom";
 
 function App() {
