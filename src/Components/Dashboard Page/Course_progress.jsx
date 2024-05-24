@@ -1,12 +1,13 @@
 import React from 'react';
 import line from "../../assets/line.svg";
 import progress from "../../assets/progress.svg";
+import progressdone from "../../assets/progressdone.svg";
 
 const Course_progress = () => {
   return (
 			<div className="flex justify-center items-center relative">
 				{" "}
-				<div className="bg-purple-400 text-lg text-white font-sans rounded-xl text-left w-64 mx-2 my-5 p-4 pb-12 relative">
+				<div className="bg-purple-400 text-lg text-white rounded-xl text-left w-auto h-auto mx-2 my-5 p-4 pb-12 relative">
 					{" "}
 					<div className="absolute  bg-gray-300 rounded-full w-8 h-8 flex items-center justify-center">
 						{" "}
@@ -22,8 +23,14 @@ const Course_progress = () => {
 						Development
 					</h1>
 					<img src={line} alt="" className="mt-5 ml-3 " />
-					<img src={progress} alt="" className="mt-5 ml-3 " />
-					<span className="mt-5 ml-3 text-black font-poppins text-sm font-medium" > Completed: 5/20 tasks</span>
+					<div className="relative mt-5 ml-3">
+						<img src={progress} alt="" className="absolute z-10 " />
+						<img src={progressdone} alt="" className="absolute z-20 " />
+					</div>
+					<span className="mt-5 ml-3 text-black font-poppins text-sm font-medium">
+						{" "}
+						Completed: 5/20 tasks
+					</span>
 				</div>
 			</div>
 		);

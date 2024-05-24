@@ -16,9 +16,16 @@ export default {
 			},
 			width: {
 				350: "330px",
-				middle: "850px",
-				right: "420px",
 				370: "369px",
+				"20vw": "17vw",
+				"30vw": "30vw",
+				"50vw": "53vw",
+			},
+			height: {
+				370: "350px",
+			},
+			margin: {
+				"20vw": "17vw",
 			},
 			fontSize: {
 				46: "46px",

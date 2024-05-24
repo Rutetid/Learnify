@@ -7,7 +7,7 @@ import page from './style.module.css'
 
 function Sidebar() {
 	return (
-		<div className="w-1/6 flex sticky flex-col h-screen bg-white">
+		<div className="w-20vw flex fixed flex-col h-screen bg-white">
 			<div className="flex pt-12 justify-center gap-2 items-center">
 				<img src={logo} alt="" className="w-16 h-16" />
 				<span className="font-kaushan text-purple-500 text-4xl">Learnify!</span>
