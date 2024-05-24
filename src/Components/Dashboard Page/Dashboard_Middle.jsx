@@ -35,8 +35,8 @@ const Dashboard_Middle = () => {
 				Complete Tasks :{" "}
 			</span>
 
-			<div className="bg-accent-dark mt-6 ml-8 mr-4 rounded-lg mb-10  ">
-				<div className="py-7 text-left pl-7 text-white flex">
+			<div className="bg-accent-dark mt-6 ml-8 mr-4 rounded-lg mb-10">
+				<div className="py-7 text-left pl-7 justify-between text-white flex">
 					<div>
 						<span className="font-poppins font-semibold text-2xl">
 							Basics of Web Development
@@ -47,8 +47,8 @@ const Dashboard_Middle = () => {
 						</p>
 					</div>
 
-					<div className="text-center flex-col">
-						<p className="border w-16 font-poppins font-semibold text-sm">
+					<div className="text-center mr-10 flex justify-end items-end flex-col">
+						<p className="border w-16 mb-2 font-poppins font-semibold text-sm">
 							{" "}
 							+1xp
 						</p>
