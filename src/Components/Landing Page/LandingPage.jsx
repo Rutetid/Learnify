@@ -10,7 +10,7 @@ function LandingPage({user}) {
 		if(user) {
 			navigate('/dashboard');
 		}
-	},[]);
+	},[user]);
 
 	return (
 		<div className="bg-bg-custom">
