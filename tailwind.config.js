@@ -20,6 +20,7 @@ export default {
 				"20vw": "17vw",
 				"30vw": "30vw",
 				"50vw": "53vw",
+				"83vw": "83vw",
 			},
 			height: {
 				370: "350px",
