@@ -7,7 +7,6 @@ import RegisterPage from "./Components/Register Page/RegisterPage";
 import { useEffect, useState } from "react";
 import fetchUser from "./utils/fetchUser";
 import supabase from "./utils/supabase";
-import AllCourses from "./Components/Dashboard Page/AllCourses";
 
 function App() {
 	// State to store user information (null initially)
@@ -99,7 +98,7 @@ function App() {
 				<Route path="/dashboard" element={<Dashboard user={user} userCourse={userCourse} />} />
 				<Route path='/login' element={<LoginPage user={user} />} />
 				<Route path='/register' element={<RegisterPage user={user} />} />
-				<Route path='all-courses' element={<AllCourses />} />
+				<Route path='/all-courses' element={<AllCourses />} />
 
 			</Routes>
 		</>
