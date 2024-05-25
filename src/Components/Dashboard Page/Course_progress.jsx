@@ -3,7 +3,8 @@ import line from "../../assets/line.svg";
 import progress from "../../assets/progress.svg";
 import progressdone from "../../assets/progressdone.svg";
 
-const Course_progress = () => {
+const Course_progress = ({course}) => {
+	console.log(course?.course.length)
   return (
 			<div className="flex justify-center items-center relative">
 				{" "}
@@ -16,20 +17,15 @@ const Course_progress = () => {
 					<h1 className="mt-12 ml-2 text-black font-poppins font-medium text-xl">
 						Coding
 					</h1>{" "}
-					<h1 className="ml-2 text-black font-poppins font-semibold text-2xl">
-						Basics of Web
-					</h1>
-					<h1 className="ml-2 text-black font-poppins font-semibold text-2xl">
-						Development
+					<h1 className="ml-2 text-black font-poppins font-semibold text-2xl" style={{width: '200px'}}>
+						{
+							course?.courseTitle
+						}
 					</h1>
 					<img src={line} alt="" className="mt-5 ml-3 " />
-					<div className="relative mt-5 ml-3">
-						<img src={progress} alt="" className="absolute z-10 " />
-						<img src={progressdone} alt="" className="absolute z-20 " />
-					</div>
 					<span className="mt-5 ml-3 text-black font-poppins text-sm font-medium">
 						{" "}
-						Completed: 5/20 tasks
+						Completed: {course?.progress}/{course?.course.length} tasks
 					</span>
 				</div>
 			</div>

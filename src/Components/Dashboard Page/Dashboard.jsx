@@ -1,16 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Sidebar from "../Sidebar/Sidebar";
-import page from "./style.module.css";
 import Dashboard_Middle from "./Dashboard_Middle";
 import Dashboard_Right from "./Dashboard_Right";
 
-export default function Dashboard() {
+export default function Dashboard({user, userCourse}) {
 	return (
 		<div className="flex">
-			<Sidebar />
-			<Dashboard_Middle />
-			<Dashboard_Right/>
-			
+			<Sidebar user={user}/>
+			<Dashboard_Middle user={user} userCourse={userCourse} />
+			<Dashboard_Right user={user} />
 		</div>
 	);
 }

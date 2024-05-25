@@ -1,6 +1,17 @@
+import { useEffect } from "react";
 import hero from "../../assets/hero.svg";
+import { useNavigate } from "react-router-dom";
 
-function LandingPage() {
+function LandingPage({user}) {
+
+	const navigate = useNavigate();
+
+	useEffect(()=> {
+		if(user) {
+			navigate('/dashboard');
+		}
+	},[user]);
+
 	return (
 		<div className="bg-bg-custom">
 			<nav className="pt-7 flex justify-around  items-center">
