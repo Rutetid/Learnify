@@ -3,31 +3,27 @@ import React from "react";
 
 function Card() {
 	return (
-		<div className="flex justify-center items-center relative">
-			{" "}
-			{/* Add relative positioning */}
-			<div className="bg-purple-400 text-lg text-white font-sans rounded-xl text-left w-60 h-64 mx-2 my-5 p-4 relative">
-				{" "}
-				{/* Add relative positioning */}
-				<div className="absolute  bg-gray-300 rounded-full w-8 h-8 flex items-center justify-center">
+		<div className="">
+			<div className="rounded-2xl bg-purple-500 pb-4">
+				<div className="absolute mt-7 ml-7 bg-gray-300 rounded-full w-9 h-9 flex items-center justify-center">
 					{" "}
-					{/* Adjust the position */}
 					<span className="text-black font-bold">M</span>
 				</div>
-				<h1 className="mt-11 ml-2 text-black font-poppins font-medium text-sm">
-					Coding
-				</h1>{" "}
-				{/* Adjust the margin */}
-				<h1 className="ml-2 text-black font-poppins font-semibold text-xl">
-					Front End
-				</h1>
-				<h1 className="ml-2 text-black font-poppins font-semibold text-xl">
-					Web Development
-				</h1>
-				<img src={line} alt="" className="mt-3" />
-				<button className="bg-black  font bold py-2 px-4 rounded w-full my-5">
-					Start
-				</button>
+				<h1 className="pl-7 pt-20 font-poppins font-medium text-xl">Coding</h1>
+				<div className="pl-7  font-poppins font-semibold text-2xl">
+					<p>Basics of Web</p>
+					<p>Development</p>
+				</div>
+				<div className="flex items-center my-5 pl-7 gap-4 font-poppins font-medium text-sm">
+					<p className="py-1 pl-2 px-2 h-7 rounded-lg bg-white ">HTML</p>
+					<p className="py-1 px-2  h-7 rounded-lg bg-white">CSS</p>
+				</div>
+				<img src={line} alt="" className="my-7 ml-7  " />
+				<div className=" py-3 mr-7 ml-7  bg-black  rounded-lg ">
+					<p className="font-poppins font-medium text-xl text-white text-center">
+						Start
+					</p>
+				</div>
 			</div>
 		</div>
 	);
