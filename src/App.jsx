@@ -1,6 +1,7 @@
 import LandingPage from "./Components/Landing Page/LandingPage";
 import Dashboard from "./Components/Dashboard Page/Dashboard";
 import AllCourses from "./Components/Dashboard Page/AllCourses";
+import YourCourses from "./Components/Dashboard Page/YourCourses";
 import { Routes, Route } from "react-router-dom";
 import LoginPage from "./Components/Login Page/LoginPage";
 import RegisterPage from "./Components/Register Page/RegisterPage";
@@ -99,6 +100,8 @@ function App() {
 				<Route path='/login' element={<LoginPage user={user} />} />
 				<Route path='/register' element={<RegisterPage user={user} />} />
 				<Route path='/all-courses' element={<AllCourses />} />
+				<Route path='/your-courses' element={<YourCourses />} />
+
 
 			</Routes>
 		</>
