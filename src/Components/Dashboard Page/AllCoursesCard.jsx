@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import supabase from '../../utils/supabase';
 import fetchUser from '../../utils/fetchUser';
 
-const AllCoursesCard = ({ course }) => {
+const AllCoursesCard = ({ course, hasStarted }) => {
 	const [confirmModal, setConfirmModal] = useState(false);
 	const navigate = useNavigate();
 
@@ -43,12 +43,14 @@ const AllCoursesCard = ({ course }) => {
 				<img src={line} alt="" className="my-7 ml-7  " />
 				<div className=" py-3 mr-7 ml-7  bg-black  rounded-lg cursor-pointer " onClick={() => { setConfirmModal(true) }}>
 					<p className="font-poppins flex justify-center items-center font-medium text-xl text-white text-center">
-						Start
+						{
+							hasStarted ? <button onClick={() => {navigate(`/roadmap/${course.code}`)}}>Continue</button> : <button>Start</button>
+						}
 					</p>
 				</div>
 			</div>
 			{
-				confirmModal && (
+				confirmModal && !hasStarted && (
 					<div className="fixed top-0 left-0 z-50 w-full h-full bg-black bg-opacity-50">
 						<div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-5 rounded-lg">
 							<h1 className="text-2xl font-bold text-center">Are you sure you want to start this course?</h1>
