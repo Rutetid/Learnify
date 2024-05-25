@@ -1,0 +1,84 @@
+/* #roadmap * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+} */
+
+html{
+    scroll-snap-type: y mandatory;
+}
+
+body {
+    background-color: #D1C5EC;
+    height: 100vh;
+}
+
+.df {
+    display: flex;
+}
+
+.jcc {
+    justify-content: center;
+}
+
+.aic {
+    align-items: center;
+}
+
+.df_col {
+    display: flex;
+    flex-direction: column;
+}
+
+.section {
+    height: 100vh;
+    position: relative;
+    scroll-snap-align: start;
+}
+
+#box {
+    position: fixed;
+    top: 65px;
+    right: 85px;
+}
+
+#backBtn {
+    gap: 7px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #3F3F3F;
+    position: fixed;
+    left: 25px;
+    top: 25px;
+    z-index: 99;
+}
+
+#backBtn span {
+    letter-spacing: -5px;
+}
+
+.line1 {
+    height: 100%;
+    border: 2.5px solid black;
+    width: fit-content;
+    position: absolute;
+    top: 0px;
+    left: 130px;
+}
+
+.chapter {
+    position: absolute;
+    left: 250px;
+}
+
+.chapter button{
+    align-self: flex-start;
+}
+
+.line2 {
+    position: absolute;
+    left: 0px;
+    width: 100px;
+    border: 2.5px solid black;
+}

@@ -1,10 +1,7 @@
 import React from 'react';
 import line from "../../assets/line.svg";
-import progress from "../../assets/progress.svg";
-import progressdone from "../../assets/progressdone.svg";
 
 const Course_progress = ({course}) => {
-	console.log(course?.course.length)
   return (
 			<div className="flex justify-center items-center relative">
 				{" "}
@@ -19,13 +16,13 @@ const Course_progress = ({course}) => {
 					</h1>{" "}
 					<h1 className="ml-2 text-black font-poppins font-semibold text-2xl" style={{width: '200px'}}>
 						{
-							course?.courseTitle
+							course?.course[0].courseTitle
 						}
 					</h1>
 					<img src={line} alt="" className="mt-5 ml-3 " />
 					<span className="mt-5 ml-3 text-black font-poppins text-sm font-medium">
 						{" "}
-						Completed: {course?.progress}/{course?.course.length} tasks
+						Completed: {course?.progress}/{course?.course[0].course.length} tasks
 					</span>
 				</div>
 			</div>
