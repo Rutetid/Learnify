@@ -3,25 +3,45 @@ import baloon from "../../assets/baloon.svg";
 import Course_progress from "./Course_progress";
 import { useEffect, useState } from "react";
 import fetchUser from "../../utils/fetchUser";
+import fetchCourses from "../../utils/fetchCourses";
 import { Link, useNavigate } from "react-router-dom";
 
 
-const Dashboard_Middle = ({ userCourse }) => {
+const Dashboard_Middle = () => {
 
 	const [user, setUser] = useState(null);
+	const [userCourse, setUserCourse] = useState(null);
 	const navigate = useNavigate();
 
 	useEffect(() => {
 		async function getUser() {
 			const temp = await fetchUser();
-			setUser(temp);
 			if (!temp) {
 				navigate('/login');
+				return;
+			}
+			setUser(temp);
+			console.log(temp);
+			const allCourses = await fetchCourses();
+			const temp2 = allCourses.filter((course) => {
+				return temp.courses?.some((userCourse) => userCourse.courseCode === course.code);
+			}
+			);
+			const progress = temp.courses.map((course) => {
+				return course.progress;
+			});
+			if(userCourse?.length <= 0 || userCourse === null){
+				setUserCourse([{ course: temp2, progress: progress}]);
+			}else{
+				setUserCourse([...userCourse, { course: temp2, progress: progress}]);
 			}
 		}
 		getUser();
-		
 	}, []);
+
+	useEffect(()=> {
+		console.log(userCourse);
+	}, [userCourse]);
 
 	return (
 		<div className="bg-dashboard flex flex-col w-50vw  ml-20vw min-h-screen ">
@@ -76,12 +96,12 @@ const Dashboard_Middle = ({ userCourse }) => {
 						<div className="py-7 text-left pl-7 justify-between text-white flex">
 							<div>
 								<span className="font-poppins font-semibold text-2xl">
-									{userCourse && userCourse[0]?.courseTitle}
+									{userCourse && userCourse[0]?.course[0].courseTitle}
 								</span>
 
 								<p className="text-sm pt-2 font-poppins font-regular ">
 									{
-										user && userCourse && userCourse[0]?.course[userCourse[0].progress].course.step_heading
+										userCourse[0]?.course[0].course[userCourse[0].progress].step_heading
 									}
 								</p>
 							</div>
@@ -94,7 +114,7 @@ const Dashboard_Middle = ({ userCourse }) => {
 								<p className="bg-white rounded-md pt-1 px-2 h-7 w-28 text-accent-dark font-poppins font-semibold text-sm">
 									{" "}
 									{
-										userCourse && userCourse[0]?.course[userCourse[0].progress].course.isSubmit ? "Submit Task" : "Complete"
+										userCourse && userCourse[0].course[0].course[userCourse[0].progress].step_heading ? "Submit Task" : "Complete"
 									}
 								</p>
 							</div>
