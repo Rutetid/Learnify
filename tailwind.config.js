@@ -10,6 +10,7 @@ export default {
 				sidebar: "#F6F3FB",
 				dashboard: "#D1C5EC",
 				"accent-dark": "#8E71D0",
+				"purple-dark" : "#6b21a8"
 			},
 			spacing: {
 				22: "90px",
