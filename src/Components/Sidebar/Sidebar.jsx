@@ -14,7 +14,6 @@ function Sidebar() {
 		const path = location.pathname;
 		const bgPath = ['146px', '212px', '280px', '346px']
 		const bgOver = document.getElementById(page.btnOver);
-		console.log(bgOver);
 		switch (path) {
 			case "/dashboard":
 				setSitePath("dashboard");

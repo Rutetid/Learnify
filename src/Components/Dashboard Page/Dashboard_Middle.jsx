@@ -5,12 +5,14 @@ import { useEffect, useState } from "react";
 import fetchUser from "../../utils/fetchUser";
 import fetchCourses from "../../utils/fetchCourses";
 import { Link, useNavigate } from "react-router-dom";
+import Loading from "../Loader/Loading";
 
 
 const Dashboard_Middle = () => {
 
 	const [user, setUser] = useState(null);
 	const [userCourse, setUserCourse] = useState(null);
+	const [courseRemaining, setCourseRemaining] = useState(null);
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -21,34 +23,37 @@ const Dashboard_Middle = () => {
 				return;
 			}
 			setUser(temp);
-			console.log(temp.courses);
 			if (temp?.courses?.length > 0 || temp.courses !== null) {
 				const allCourses = await fetchCourses();
-				const temp2 = allCourses.filter((course) => {
+				const userSelection = allCourses.filter((course) => {
 					return temp.courses?.some((userCourse) => userCourse.courseCode === course.code);
 				});
-				const progress = temp.courses.map((course) => {
-					return course.progress;
+				const userProgressArray = temp.courses;
+				const newUserSelection = userSelection.map((course, index) => {
+					const userProgressFind = userProgressArray.find((userProgress) => userProgress.courseCode === course.code);
+					return {
+						code: course.code,
+						course: course.course,
+						courseTitle: course.courseTitle,
+						progress: userProgressFind.progress
+					}
 				});
-				if (userCourse?.length <= 0 || userCourse === null) {
-					setUserCourse([{ course: temp2, progress: progress }]);
-				} else {
-					setUserCourse([...userCourse, { course: temp2, progress: progress }]);
-				}
+				const userIncompleteCourses = newUserSelection.filter((course) => {
+					return course.progress !== course.course.length;
+				});
+				setUserCourse(newUserSelection);
+				setCourseRemaining(userIncompleteCourses);
+				console.log(userIncompleteCourses);
 			}
 		}
 		getUser();
 	}, []);
 
-	useEffect(() => {
-		console.log(userCourse);
-	}, [userCourse]);
-
 	return (
 		<div className="bg-dashboard flex flex-col w-50vw  ml-20vw min-h-screen ">
 			{
 				!user && !userCourse ? (
-					<div className="text-2xl text-center col-span-3">Loading...</div>
+					<div className="text-2xl text-center col-span-3"><Loading /></div>
 				) : (
 					<>
 						<div className="bg-accent-dark mt-32 ml-8 rounded-lg relative ">
@@ -57,13 +62,6 @@ const Dashboard_Middle = () => {
 									<span className="text-2xl">
 										Welcome Back! <strong>{user?.username}</strong> 👋
 									</span>
-
-									<p className="text-sm pt-2">
-										You have completed <strong>12 task</strong> this week!
-									</p>
-									<p className="text-sm ">
-										Keep it up and you will be able to finish the course in no time
-									</p>
 								</div>
 								<div>
 									<img src={baloon} alt="" className="absolute top-[-60%] right-0 mr-12" />
@@ -112,30 +110,36 @@ const Dashboard_Middle = () => {
 
 								<div className="bg-accent-dark mt-6 ml-8 rounded-lg mb-10">
 									<div className="py-7 text-left pl-7 justify-between text-white flex">
-										<div>
-											<span className="font-poppins font-semibold text-2xl">
-												{userCourse && userCourse[0]?.course[0].courseTitle}
-											</span>
+										{
+											courseRemaining.length === 0 ? (
+												<p className="text-2xl">Congratulations! You have completed all the tasks</p>
+											) : (
+												<>
+													<div>
+														<span className="font-poppins font-semibold text-2xl">
+															{courseRemaining[0]?.courseTitle}
+														</span>
 
-											<p className="text-sm pt-2 font-poppins font-regular ">
-												{
-													userCourse[0]?.course[0].course[userCourse[0].progress].step_heading
-												}
-											</p>
-										</div>
+														<p className="text-sm pt-2 font-poppins font-regular ">
+															{
+																courseRemaining[0]?.course[courseRemaining[0].progress].step_heading
+															}
+														</p>
+													</div>
 
-										<div className="text-center mr-6 flex justify-end items-end flex-col">
-											<p className="border-solid border-2 w-16 h-7 pt-1 mb-2 rounded-md font-poppins font-semibold text-sm">
-												{" "}
-												+1xp
-											</p>
-											<p className="bg-white rounded-md pt-1 px-2 h-7 w-28 text-accent-dark font-poppins font-semibold text-sm">
-												{" "}
-												{
-													userCourse && userCourse[0].course[0].course[userCourse[0].progress].step_heading ? "Submit Task" : "Complete"
-												}
-											</p>
-										</div>
+													<div className="text-center mr-6 flex justify-end items-end flex-col">
+														<p className="border-solid border-2 w-16 h-7 pt-1 mb-2 rounded-md font-poppins font-semibold text-sm">
+															{" "}
+															+1xp
+														</p>
+														<p className="bg-white rounded-md pt-1 px-2 h-7 w-28 text-accent-dark font-poppins font-semibold text-sm">
+															{" "}
+															Complete
+														</p>
+													</div>
+												</>
+											)
+										}
 									</div>
 								</div>
 							</>

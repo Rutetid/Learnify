@@ -1,16 +1,10 @@
 import { useEffect } from "react";
 import hero from "../../assets/hero.svg";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Card from "./Card";
 
 function LandingPage({ user }) {
 	const navigate = useNavigate();
-
-	useEffect(() => {
-		if (user) {
-			navigate("/dashboard");
-		}
-	}, [user]);
 
 	return (
 		<div className="bg-bg-custom">
@@ -26,13 +20,21 @@ function LandingPage({ user }) {
 					<a href="#">Code</a>
 				</div>
 				<div className="flex gap-4 items-center font-poppins font-semibold text-sm">
-					<div className="border-2 rounded-md py-2 px-3 border-black">
-						<button type="button">Sign up</button>
-					</div>
+					{
+						!user ? (<>
+							<div className="border-2 rounded-md py-2 px-3 border-black">
+								<Link to='/register' type="button">Sign up</Link>
+							</div>
 
-					<div className="rounded-md bg-black text-white  py-2 px-4 border-2 border-black">
-						<button type="button">Sign in</button>
-					</div>
+							<div className="rounded-md bg-black text-white  py-2 px-4 border-2 border-black">
+								<Link to='/login' type="button">Sign in</Link>
+							</div>
+						</>) : (
+							<div className="rounded-md bg-black text-white  py-2 px-4 border-2 border-black">
+								<Link to='/dashboard' type="button">Dashboard</Link>
+							</div>
+						)
+					}
 				</div>
 			</nav>
 

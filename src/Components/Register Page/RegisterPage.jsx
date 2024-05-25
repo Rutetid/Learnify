@@ -5,52 +5,49 @@ import { Link, useNavigate } from 'react-router-dom'
 import supabase from '../../utils/supabase'
 
 export default function RegisterPage({ user }) {
-    const [firstName, setFirstName] = useState('')
-    const [lastName, setLastName] = useState('')
+    const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const [terms, setTerms] = useState(false)
 
+    const navigate = useNavigate();
+    
     const handleSubmit = async (e) => {
-        // e.preventDefault()
+        e.preventDefault()
 
-        // if(password.length < 8) {
-        //     alert('Password must be at least 8 characters long')
-        //     return
-        // }
+        if (password.length < 8) {
+            alert('Password must be at least 8 characters long')
+            return
+        }
 
-        // if (password !== confirmPassword) {
-        //     alert('Passwords do not match')
-        //     return
-        // }
+        if (password !== confirmPassword) {
+            alert('Passwords do not match')
+            return
+        }
 
-        // if (!terms) {
-        //     alert('Please accept the terms and conditions')
-        //     return
-        // }
+        if (!terms) {
+            alert('Please accept the terms and conditions')
+            return
+        }
 
-        // const {data, error} = await supabase.auth.signUp({
-        //     email: email,
-        //     password: password
-        // })
+        const userSignUp = await supabase.auth.signUp({
+            email: email,
+            password: password
+        })
 
-        // if (error) {
-        //     alert(error.message)
-        //     return
-        // }
+        if (userSignUp.error) {
+            alert(userSignUp.error.message)
+            return
+        }
 
-        // const userId = data.user.id;
-        // console.log(userId);
+        const userId = userSignUp.data.user.id;
+        const { data, error } = await supabase.from('users').insert([
+            { user_Id: userId, username: username }
+        ]);
+        console.log(data);
     }
 
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        if (user) {
-            navigate('/dashboard');
-        }
-    }, [user])
 
     return (
         <div className="bg-purple-100 flex items-center justify-center min-h-screen" id={page.page}>
@@ -69,15 +66,10 @@ export default function RegisterPage({ user }) {
                     </div>
                     <form onSubmit={handleSubmit}>
                         <div className="flex mb-4">
-                            <input type="text" placeholder="First Name"
-                                className="w-1/2 mr-2 p-2 text-lg font-regular border border-gray-300 rounded"
-                                value={firstName}
-                                onChange={(e) => setFirstName(e.target.value)}
-                            />
-                            <input type="text" placeholder="Last Name"
-                                className="w-1/2 ml-2 p-2 text-lg font-regular border border-gray-300 rounded"
-                                value={lastName}
-                                onChange={(e) => setLastName(e.target.value)}
+                            <input type="text" placeholder="Your Username"
+                                className="w-full p-2 text-lg font-regular  border border-gray-300 rounded"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
                             />
                         </div>
                         <div className="mb-4">

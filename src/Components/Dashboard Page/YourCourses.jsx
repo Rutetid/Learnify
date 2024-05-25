@@ -3,6 +3,7 @@ import Sidebar from "../Sidebar/Sidebar";
 import YourCoursesCard from "./YourCoursesCard";
 import fetchCourses from "../../utils/fetchCourses";
 import fetchUser from "../../utils/fetchUser";
+import Loading from "../Loader/Loading";
 
 const YourCourses = () => {
 
@@ -19,13 +20,21 @@ const YourCourses = () => {
 			return;
 		}
 		const allCourses = await fetchCourses();
-		const temp2 = allCourses.filter((course) => {
+		const userSelection = allCourses.filter((course) => {
 			return temp.courses?.some((userCourse) => userCourse.courseCode === course.code);
 		});
-		const progress = temp.courses.map((course) => {
-			return course.progress;
+		const userProgressArray = temp.courses;
+		const newUserSelection = userSelection.map((course, index) => {
+			const userProgressFind = userProgressArray.find((userProgress) => userProgress.courseCode === course.code);
+			return {
+				code: course.code,
+				course: course.course,
+				courseTitle: course.courseTitle,
+				progress: userProgressFind.progress
+			}
 		});
-		setUserCourses({ courses: temp2, progress: progress });
+		setUserCourses(newUserSelection);
+		console.log(newUserSelection);
 	}
 	return (
 		<div>
@@ -37,10 +46,11 @@ const YourCourses = () => {
 					<div className="grid grid-cols-3 mt-16 mx-32 gap-4">
 						{
 							!userCourses ? (
-								<div className="text-2xl text-center col-span-3">Loading...</div>
+								<div className="text-2xl text-center col-span-3"><Loading /></div>
 							) : (
-								userCourses.courses.map((course, index) => {
-									return <YourCoursesCard course={course} progress={userCourses.progress[index]} key={index} />
+								userCourses.map((course, index) => {
+									console.log(course);
+									return <YourCoursesCard course={course} progress={course.progress} key={index} />
 								})
 							)
 						}
