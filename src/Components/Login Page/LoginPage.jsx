@@ -1,23 +1,34 @@
 import React, { useEffect, useState } from 'react'
 import page from './style.module.css'
 import supabase from '../../utils/supabase.js'
+import { Link, useNavigate } from 'react-router-dom'
+import fetchUser from '../../utils/fetchUser.js';
 
 export default function LoginPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        let {data, error} = await supabase.auth.signInWithPassword({
+        let { data, error } = await supabase.auth.signInWithPassword({
             email: email,
             password: password
         });
         if (error) {
             alert(error.message);
         } else {
-            alert('Logged in successfully!');
+            navigate('/dashboard');
         }
     }
+
+    useEffect(() => {
+        async function checkUser() {
+            const user = await fetchUser();
+            if(user) navigate('/dashboard');
+        }
+        checkUser();
+    }, []);
 
     return (
         <div className="bg-purple-100 flex items-center justify-center min-h-screen" id={page.page}>
@@ -35,10 +46,10 @@ export default function LoginPage() {
                     </div>
                     <form onSubmit={handleSubmit}>
                         <div className="mb-6">
-                            <input type="email" value={email} onChange={(e) => {setEmail(e.target.value)}} placeholder="Your Email" className="w-full p-2 text-lg font-regular border border-gray-300 rounded" />
+                            <input type="email" value={email} onChange={(e) => { setEmail(e.target.value) }} placeholder="Your Email" className="w-full p-2 text-lg font-regular border border-gray-300 rounded" />
                         </div>
                         <div className="mb-6">
-                            <input type="password" placeholder="Password" value={password} onChange={(e) => {setPassword(e.target.value)}} className="w-full p-2 text-lg font-regular border border-gray-300 rounded" />
+                            <input type="password" placeholder="Password" value={password} onChange={(e) => { setPassword(e.target.value) }} className="w-full p-2 text-lg font-regular border border-gray-300 rounded" />
                         </div>
                         <div className="flex items-center justify-between mb-8">
                             <div className="flex items-center">
@@ -57,7 +68,7 @@ export default function LoginPage() {
                     <button className="w-full bg-white text-gray-700 p-2 rounded border border-gray-300 flex items-center justify-center">
                         <img src="google-logo.png" alt="Google" className="mr-2 w-6 h-6" /> Sign in with Google
                     </button>
-                    <p className="mt-4 text-center text-gray-600">Are you new? <a href="register.html" className="text-purple-600 underline">Create an Account</a></p>
+                    <p className="mt-4 text-center text-gray-600">Are you new? <Link to="/register" className="text-purple-600 underline">Create an Account</Link></p>
                 </div>
             </div>
         </div>

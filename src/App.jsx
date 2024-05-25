@@ -71,24 +71,25 @@ function App() {
 
 		// Combine course list with user's progress for enrolled courses
 		const userCourses = [];
-		for (let course of courseList) {
-			for (let userCourse of user.courses) {
-				if (course.code === userCourse.code) {
-					userCourses.push({ course });
-					break; // Exit inner loop once a match is found for a course
+		let obj = [];
+		if (user.courses) {
+			for (let course of courseList) {
+				for (let userCourse of user.courses) {
+					if (course.code === userCourse.code) {
+						userCourses.push({ course });
+						break; // Exit inner loop once a match is found for a course
+					}
 				}
+			}
+			for (let i = 0; i < courseTitles.data.length; i++) {
+				const filteredCourse = userCourses.filter(course => course.course.code === courseTitles.data[i].course_code);
+				const certainCourse = user.courses.find(course => course.code === courseTitles.data[i].course_code);
+
+				obj[i] = { courseTitle: courseTitles.data[i].course_title, course: filteredCourse, progress: certainCourse.at };
 			}
 		}
 
-		let obj = [];
-		for(let i = 0; i < courseTitles.data.length; i++){
-			const filteredCourse = userCourses.filter(course => course.course.code === courseTitles.data[i].course_code);
-			const certainCourse = user.courses.find(course => course.code === courseTitles.data[i].course_code);
-
-			obj[i] = {courseTitle: courseTitles.data[i].course_title, course: filteredCourse, progress: certainCourse.at};
-		}
 		setUserCourse(obj);
-		console.log(obj);
 	};
 
 	return (
@@ -101,8 +102,6 @@ function App() {
 				<Route path='/register' element={<RegisterPage user={user} />} />
 				<Route path='/all-courses' element={<AllCourses />} />
 				<Route path='/your-courses' element={<YourCourses />} />
-
-
 			</Routes>
 		</>
 	);
