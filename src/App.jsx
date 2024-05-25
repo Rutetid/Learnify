@@ -1,5 +1,6 @@
 import LandingPage from "./Components/Landing Page/LandingPage";
 import Dashboard from "./Components/Dashboard Page/Dashboard";
+import AllCourses from "./Components/Dashboard Page/AllCourses";
 import { Routes, Route } from "react-router-dom";
 import LoginPage from "./Components/Login Page/LoginPage";
 import RegisterPage from "./Components/Register Page/RegisterPage";
@@ -93,11 +94,13 @@ function App() {
 	return (
 		<>
 			<Routes>
+
 				<Route path="/" element={<LandingPage user={user} />} />
 				<Route path="/dashboard" element={<Dashboard user={user} userCourse={userCourse} />} />
 				<Route path='/login' element={<LoginPage user={user} />} />
 				<Route path='/register' element={<RegisterPage user={user} />} />
 				<Route path='all-courses' element={<AllCourses />} />
+
 			</Routes>
 		</>
 	);
