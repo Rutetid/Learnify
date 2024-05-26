@@ -1,7 +1,7 @@
 import line from "../../assets/line.svg";
 import React from "react";
 
-function Card({text}) {
+function Card({text , tags}) {
 
 	return (
 		<div className="">
@@ -11,19 +11,17 @@ function Card({text}) {
 					<span className="text-black font-bold">M</span>
 				</div>
 				<h1 className="pl-7 pt-20 font-poppins font-medium text-xl ">Coding</h1>
-				<div className="pl-7  font-poppins font-semibold text-2xl ">
+				<div className="pl-7 w-52 font-poppins font-semibold text-2xl ">
 					<p>{text}</p>
 					
 				</div>
-				<div className="flex items-center my-5 pl-7 gap-4 font-poppins font-medium text-sm">
-					<p className="py-1 pl-2 px-2 h-7 rounded-lg bg-white ">HTML</p>
-					<p className="py-1 px-2  h-7 rounded-lg bg-white">CSS</p>
-				</div>
-				<img src={line} alt="" className="my-7 ml-7  " />
-				<div className=" py-3 mr-7 ml-7  bg-black  rounded-lg ">
-					<p className="font-poppins font-medium text-xl text-white text-center">
-						Start
-					</p>
+				<div className="flex items-center my-5 pl-7 gap-2 font-poppins font-medium text-sm">
+					{
+						tags.map((tag, index) => {
+							return <p key={index} className="py-1 px-2 text-center h-7 rounded-lg bg-white">{tag}</p>
+						})
+					}
+					{/* <p className="py-1 px-2  h-7 rounded-lg bg-white">CSS</p> */}
 				</div>
 			</div>
 		</div>

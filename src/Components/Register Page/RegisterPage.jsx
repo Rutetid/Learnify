@@ -15,7 +15,14 @@ export default function RegisterPage({ user }) {
     
     const handleSubmit = async (e) => {
         e.preventDefault()
-
+        if (username.includes(' ')) {
+            alert('Username should not contain spaces')
+            return
+        }
+        if (username.length > 8) {
+            alert('Username must be less than 8 characters long')
+            return
+        }
         if (password.length < 8) {
             alert('Password must be at least 8 characters long')
             return
@@ -108,10 +115,6 @@ export default function RegisterPage({ user }) {
                         <span className="mx-2 text-gray-500">or</span>
                         <hr className="flex-grow border-t border-gray-300" />
                     </div>
-                    <button
-                        className="w-full bg-white text-gray-700 p-2 rounded border border-gray-300 flex items-center justify-center">
-                        <img src="google-logo.png" alt="Google" className="mr-2 w-6 h-6" /> Sign in with Google
-                    </button>
                     <p className="mt-4 text-center text-gray-600">Already Registered? <Link to="/login" className="text-purple-600 underline">Login
                         Here</Link></p>
                 </div>

@@ -48,10 +48,14 @@ const YourCourses = () => {
 							!userCourses ? (
 								<div className="text-2xl text-center col-span-3"><Loading /></div>
 							) : (
-								userCourses.map((course, index) => {
-									console.log(course);
+								userCourses.length===0 ? (
+									<div className="text-2xl text-center col-span-3">No Courses Found</div>
+								) : (
+									userCourses.map((course, index) => {
+									
 									return <YourCoursesCard course={course} progress={course.progress} key={index} />
 								})
+								)
 							)
 						}
 					</div>

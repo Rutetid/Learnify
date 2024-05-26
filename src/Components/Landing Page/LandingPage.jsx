@@ -65,7 +65,12 @@ function LandingPage({ user }) {
 							type="button"
 							className="bg-gradient-to-r from-button-start to-button-end py-3 px-7 rounded-lg font-poppins font-semibold text-white text-xl"
 						>
-							Get Started
+							{!user ? (
+								<Link to="/register">Get Started</Link>
+							) : (
+								<Link to="/dashboard">Dashboard</Link>
+							
+							)}
 						</button>
 					</div>
 				</div>
@@ -83,9 +88,9 @@ function LandingPage({ user }) {
 					</span>
 				</span>
 				<div className="grid grid-cols-3 mt-16 px-80 gap-5">
-					<Card text="Basics of Web Development" />
-					<Card text="Introduction to Javascript" />
-					<Card text="DSA using &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; C++/C " />
+					<Card text="Basics of Web Development" tags={["HTML" ,"CSS"]}/>
+					<Card text="Introduction to Javascript" tags={["JS"]}/>
+					<Card text="DSA using C++/C " tags={["C", "C++"]}/>
 				</div>
 
 				<div className="mt-36">
