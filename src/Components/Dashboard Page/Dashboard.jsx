@@ -1,23 +1,17 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Sidebar from "../Sidebar/Sidebar";
 import Dashboard_Middle from "./Dashboard_Middle";
 import Dashboard_Right from "./Dashboard_Right";
 import Loading from "../Loader/Loading";
 
-export default function Dashboard({ user, userCourse }) {
+export default function Dashboard() {
 	return (
 		<div className="flex">
-			{
-				!user && !userCourse ? (
-					<div className="text-2xl text-center w-full col-span-3"><Loading /></div>
-				) : (
-					<>
-						<Sidebar user={user} />
-						<Dashboard_Middle user={user} userCourse={userCourse} />
-						<Dashboard_Right user={user} />
-					</>
-				)
-			}
+			<>
+				<Sidebar />
+				<Dashboard_Middle />
+				<Dashboard_Right />
+			</>
 		</div>
 	);
 }
