@@ -52,5 +52,5 @@ Distributed under the MIT License. See `LICENSE` for more information.
 For any inquiries or feedback, feel free to contact us:
 - **Abhishek Anand
 - **Prakhar Khandelwal
-- **Abhishek Sharma
-- **Priyanshu
+- **Abhishek Mishra
+- **Priyanshu Shankar
