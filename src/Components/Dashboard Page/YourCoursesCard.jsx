@@ -26,13 +26,14 @@ const AllCoursesCard = ({ course, progress }) => {
 					Completed : {progress}/{course.course.length} tasks
 				</div>
 
-				<div className=" py-3 mt-4 mr-7 ml-7  bg-black cursor-pointer  rounded-lg " onClick={() => {
-					navigate(`/roadmap/${course.code}`);
-				}}>
-					<p className="font-poppins font-medium text-xl text-white text-center">
-						Continue
+				<div className=" py-3 mr-7 ml-7  bg-black rounded-lg cursor-pointer" onClick={() => { navigate(`/roadmap/${course.code}`) }}>
+					<p className="font-poppins flex justify-center items-center font-medium text-xl text-white text-center">
+						<button>{progress === course.course.length ? 
+							"Completed" : "Continue"
+						 }</button>
 					</p>
 				</div>
+
 			</div>
 		</div>
 	);

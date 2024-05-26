@@ -16,13 +16,13 @@ const Course_progress = ({course}) => {
 					</h1>{" "}
 					<h1 className="ml-2 text-black font-poppins font-semibold text-2xl" style={{width: '200px'}}>
 						{
-							course?.course[0].courseTitle
+							course?.courseTitle
 						}
 					</h1>
 					<img src={line} alt="" className="mt-5 ml-3 " />
 					<span className="mt-5 ml-3 text-black font-poppins text-sm font-medium">
 						{" "}
-						Completed: {course?.progress}/{course?.course[0].course.length} tasks
+						Completed: {course?.progress}/{course?.course.length} tasks
 					</span>
 				</div>
 			</div>

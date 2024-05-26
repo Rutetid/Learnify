@@ -5,6 +5,7 @@ import fetchCourses from '../../utils/fetchCourses';
 import { useNavigate } from 'react-router-dom';
 import fetchUser from '../../utils/fetchUser';
 import supabase from '../../utils/supabase';
+import Loading from '../Loader/Loading';
 
 export default function Roadmap() {
 
@@ -20,12 +21,12 @@ export default function Roadmap() {
 
     const getCourse = async () => {
         const allCourses = await fetchCourses();
-        const course = allCourses.find(course => course.code === courseCode);
+        const temp = allCourses.find(course => course.code === courseCode);
         const user = await fetchUser();
         const userCourse = user.courses.find(course => course.courseCode === courseCode);
+
         setProgress(userCourse.progress);
-        setCourse(course);
-        console.log(user);
+        setCourse(temp);
         setUser(user);
     }
 
@@ -55,7 +56,10 @@ export default function Roadmap() {
                         <div className={`${page.section} flex justify-center items-center ${page.df_col}`}>
                             <div id={page.heading} className="flex flex-col justify-center items-center">
                                 <h1 className='font-semibold text-5xl'>{course?.courseTitle}</h1>
-                                <p className='text-2xl'>Total Tasks : <strong>{course?.course.length}</strong></p>
+                                {
+                                    progress === course?.course.length ? <h2 className='font-medium text-2xl text-green-600'>Completed</h2>
+                                        : <h2 className='font-medium text-2xl'>Completed : {progress}/{course?.course.length} tasks</h2>
+                                }
                             </div>
                         </div>
 
@@ -89,7 +93,7 @@ export default function Roadmap() {
                         }
                     </div>
                 </>
-                    : <h1 className='text-4xl font-bold'>Loading...</h1>
+                    : <h1 className='text-4xl font-bold'><Loading /></h1>
             }
         </div>
     )

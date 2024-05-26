@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import AllCoursesCard from "./AllCoursesCard";
 import fetchCourses from "../../utils/fetchCourses";
 import fetchUser from "../../utils/fetchUser";
+import Loading from "../Loader/Loading";
 
 
 const AllCourses = () => {
@@ -17,10 +18,19 @@ const AllCourses = () => {
 				return user.courses?.some((userCourse) => userCourse.courseCode === course.code);
 			});
 			setAllCourses(allCoursesArray);
-			setUserCourses(temp2);
+			let userProgress = [];
+			if (user.courses) {
+				const userProgress = user.courses.map((course) => {
+					return course.progress;
+				});
+			}
+			const newCourse = temp2.map((course, index) => {
+				return { course: course, progress: userProgress[index] };
+			});
+			setUserCourses(newCourse);
 		}
 		courseFetch();
-	},[])
+	}, [])
 
 	return (
 		<div className="flex">
@@ -32,16 +42,17 @@ const AllCourses = () => {
 					{
 						allCourses ? (
 							allCourses.map((course, index) => {
-								for(let i = 0; i < userCourses.length; i++){
-									if(userCourses[i].code === course.code){
-										console.log('Passed');
-										return <AllCoursesCard key={index} course={course} hasStarted={true} />
+								if (userCourses) {
+									for (let i = 0; i < userCourses.length; i++) {
+										if (userCourses[i].course.code === course.code) {
+											return <AllCoursesCard key={index} course={course} hasStarted={true} progress={userCourses[i].progress} />
+										}
 									}
 								}
 								return <AllCoursesCard key={index} course={course} hasStarted={false} />
 							})
 						) : (
-							<div className="text-2xl text-center col-span-3">Loading...</div>
+							<div className="text-2xl text-center col-span-3"><Loading /></div>
 						)
 					}
 				</div>
