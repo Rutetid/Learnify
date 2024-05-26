@@ -90,18 +90,14 @@ const Dashboard_Middle = () => {
 							<>
 								{!userCourse && (
 									<>
-										<div className="flex flex-col">
-											<p className="text-accent-dark ml-22 h-52 w-350 flex justify-center items-center font-poppins font-semibold text-2xl">
-												Go to All Courses and Select the course you want to
-												start
-											</p>
+										
+											
 											<Link
 												to="/all-courses"
-												className="bg-purple-dark w-80 ml-22 flex justify-center items-center text-white font-bold py-2 px-4 rounded cursor-pointer"
+												className="bg-purple-dark w-80  mt-10 ml-4 flex justify-center items-center text-white font-bold py-2 px-4 rounded cursor-pointer"
 											>
-												All Courses
+												Start a Course
 											</Link>
-										</div>
 									</>
 								)}
 							</>

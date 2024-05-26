@@ -16,7 +16,7 @@ const Course_progress = ({course}) => {
 					</h1>{" "}
 					<h1
 						className="ml-2 text-black font-poppins font-semibold text-2xl"
-						style={{ width: "200px" }}
+						style={{ width: "200px" , height: "100px"}}
 					>
 						{course?.courseTitle}
 					</h1>

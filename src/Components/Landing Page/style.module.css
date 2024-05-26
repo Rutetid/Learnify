@@ -1,0 +1,7 @@
+html{
+    scroll-behavior: smooth;
+}
+
+.part {
+    scroll-margin-top: 100px;
+}
