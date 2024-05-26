@@ -96,9 +96,9 @@ function LandingPage({ user }) {
 					</span>
 				</span>
 				<div className="grid grid-cols-3 mt-16 px-80 gap-5">
-					<Card text="Basics of Web Development" tags={["HTML", "CSS"]} />
-					<Card text="Introduction to Javascript" tags={["JS"]} />
-					<Card text="DSA using C++/C " tags={["C", "C++"]} />
+					<Card text="Basics of Web Development" tags={["HTML", "CSS"]} code='wd01' />
+					<Card text="Introduction to Javascript" tags={["JS"]} code='js01' />
+					<Card text="DSA using C++/C " tags={["C", "C++"]} code='dsa01' />
 				</div>
 
 				<div className="mt-36">

@@ -30,7 +30,8 @@ const YourCourses = () => {
 				code: course.code,
 				course: course.course,
 				courseTitle: course.courseTitle,
-				progress: userProgressFind.progress
+				progress: userProgressFind.progress,
+				tags: course.tags
 			}
 		});
 		setUserCourses(newUserSelection);
