@@ -36,7 +36,7 @@ const AllCoursesCard = ({ course, hasStarted, progress }) => {
 	}
 	return (
 		<div className="">
-			<div className="rounded-2xl bg-purple-100 pb-4">
+			<div className="rounded-2xl bg-purple-100 pb-4 shadow-md">
 				<div className="absolute mt-7 ml-7 bg-gray-300 rounded-full w-9 h-9 flex items-center justify-center">
 					{" "}
 					<span className="text-black font-bold">M</span>

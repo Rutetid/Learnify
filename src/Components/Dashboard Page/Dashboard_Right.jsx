@@ -49,7 +49,7 @@ const Dashboard_Right = () => {
 				}
 			</div>
 
-			<div className="bg-purple-800 mt-10 h-370 rounded-lg w-370 flex items-center justify-center text-center text-white">
+			<div className="bg-db-secondary mt-10 h-370 rounded-lg w-370 flex items-center justify-center text-center text-white">
 				<p className="font-poppins font-bold text-2xl">
 					Calendar <br /> Coming SOON!
 				</p>

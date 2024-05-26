@@ -10,7 +10,16 @@ export default {
 				sidebar: "#F6F3FB",
 				dashboard: "#D1C5EC",
 				"accent-dark": "#8E71D0",
-				"purple-dark" : "#6b21a8"
+				"purple-dark": "#6b21a8",
+				"gradient-purple": "#B59CFF",
+				"gradient-white": "#F3F1F9",
+				"start-gradient": "#6B46C1",
+				"end-gradient": "#43218C",
+				"button-start": "#43218C",
+				"button-end": "#824EF3",
+				"card-start": "#AC8AF6",
+				"card-end": "#FFDDDD",
+				"db-secondary": "#6627D8",
 			},
 			spacing: {
 				22: "90px",
@@ -38,5 +47,22 @@ export default {
 			},
 		},
 	},
-	plugins: [],
+	variants: {
+		extend: {
+			backgroundImage: ["hover", "focus"],
+		},
+	},
+	plugins: [
+		require("@tailwindcss/typography"),
+		function ({ addUtilities }) {
+			const newUtilities = {
+				".gradient-text": {
+					background: "linear-gradient(to right, var(--tw-gradient-stops))",
+					"-webkit-background-clip": "text",
+					"-webkit-text-fill-color": "transparent",
+				},
+			};
+			addUtilities(newUtilities);
+		},
+	],
 };

@@ -27,10 +27,6 @@ function Sidebar() {
 				setSitePath("your-courses");
 				bgOver.style.top = bgPath[2];
 				break;
-			case "/your-task":
-				setSitePath("your-task");
-				bgOver.style.top = bgPath[3];
-				break;
 			default:
 				break;
 		}
@@ -42,7 +38,10 @@ function Sidebar() {
 				<span className="font-kaushan text-purple-500 text-4xl">Learnify!</span>
 			</div>
 
-			<div className="flex flex-col justify-center gap-9 mt-12" id={page.btnHolder}>
+			<div
+				className="flex flex-col justify-center gap-9 mt-12"
+				id={page.btnHolder}
+			>
 				<div id={page.btnOver}></div>
 				<Link to="/dashboard" className="flex gap-3 items-center">
 					<img src={dashboard} alt="" className="w-5 h-5" />
@@ -54,16 +53,9 @@ function Sidebar() {
 				</Link>
 				<Link to="/your-courses" className="flex gap-3 items-center">
 					<img src={folder} alt="" className="w-5 h-5" />
-					<span className={`font-poppins ${page.btn}`}>
-						Your Courses
-					</span>
-				</Link>
-				<Link to="/your-task" className="flex gap-3 items-center">
-					<img src={tasks} alt="" className="w-5 h-5" />
-					<span className={`font-poppins ${page.btn}`}>Your Task</span>
+					<span className={`font-poppins ${page.btn}`}>Your Courses</span>
 				</Link>
 			</div>
-
 			<div className="bg-accent-dark rounded-xl " id={page.upgradePanel}>
 				<span className="text-white font-poppins pt-22 pl-5 pr-5 text-xl block text-center">
 					{" "}
