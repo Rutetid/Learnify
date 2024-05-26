@@ -45,7 +45,7 @@ export default function RegisterPage({ user }) {
         const { data, error } = await supabase.from('users').insert([
             { user_Id: userId, username: username }
         ]);
-        console.log(data);
+        navigate('/dashboard');
     }
 
 
