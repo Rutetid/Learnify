@@ -7,7 +7,6 @@ import LoginPage from "./Components/Login Page/LoginPage";
 import RegisterPage from "./Components/Register Page/RegisterPage";
 import { useEffect, useState } from "react";
 import fetchUser from "./utils/fetchUser";
-import supabase from "./utils/supabase";
 import Roadmap from "./Components/RoadMap Page/Roadmap";
 
 function App() {
@@ -27,7 +26,6 @@ function App() {
 	return (
 		<>
 			<Routes>
-
 				<Route path="/" element={<LandingPage user={user} />} />
 				<Route path="/dashboard" element={<Dashboard user={user} />} />
 				<Route path='/login' element={<LoginPage user={user} />} />

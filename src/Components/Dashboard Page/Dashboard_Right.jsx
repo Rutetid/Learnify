@@ -34,15 +34,17 @@ const Dashboard_Right = () => {
 
 	return (
 		<div className="bg-dashboard flex flex-col w-30vw items-center relative">
-			<div className="mt-7 bg-white flex items-center rounded-md ml-24 w-64 cursor-pointer relative" onClick={handleModal}>
-				<img className="py-2 px-2" src={pfp} alt="" />
+			<div className="p-2 mt-7 bg-white flex items-center rounded-md ml-24 w-64 cursor-pointer relative" onClick={handleModal}>
+				<div className="bg-db-secondary mr-2 h-10 w-10 rounded-md flex justify-center items-center">
+					<img src="pfp.png" alt="" className="invert h-7" />
+				</div>
 				<div className="flex gap-24">
 					<span className="font-poppins font-semibold text-lg">{user?.username}</span>
 					<img className="" src={dropdown} alt="" />
 				</div>
 				{
 					userModal && (
-						<div className="absolute bg-white rounded-md mt-2 w-64 h-14 flex flex-col justify-center items-center top-14" onClick={handleLogout}>
+						<div className="absolute bg-white rounded-md mt-2 w-64 h-14 flex flex-col justify-center left-0 items-center top-14" onClick={handleLogout}>
 							<p className="font-poppins font-semibold text-lg py-2">Logout</p>
 						</div>
 					)
