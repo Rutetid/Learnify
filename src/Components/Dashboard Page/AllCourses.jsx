@@ -25,7 +25,7 @@ const AllCourses = () => {
 				});
 			}
 			const newCourse = temp2.map((course, index) => {
-				return { course: course, progress: userProgress[index] };
+				return { course: course, progress: userProgress[index]};
 			});
 			setUserCourses(newCourse);
 		}

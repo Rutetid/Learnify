@@ -40,7 +40,7 @@ const fetchCourses = async (user) => {
     // Create an array of json objects with course title and steps
     for (let course of courseTitles.data) {
         const courseSteps = formattedData.filter(step => step.code === course.course_code);
-        courseList.push({ courseTitle: course.course_title, course: courseSteps, code: course.course_code});
+        courseList.push({ courseTitle: course.course_title, course: courseSteps, code: course.course_code, tags: course.course_tag});
     }
 
     return courseList;
