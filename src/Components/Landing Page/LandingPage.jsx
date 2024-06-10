@@ -99,9 +99,13 @@ function LandingPage() {
 					</span>
 				</span>
 				<div className="grid grid-cols-3 mt-16 px-80 gap-5">
-					<Card text="Basics of Web Development" tags={["HTML", "CSS"]} code='wd01' />
-					<Card text="Introduction to Javascript" tags={["JS"]} code='js01' />
-					<Card text="DSA using C++/C " tags={["C", "C++"]} code='dsa01' />
+					<Card
+						text="Basics of Web Development"
+						tags={["HTML", "CSS"]}
+						code="wd01"
+					/>
+					<Card text="Introduction to Javascript" tags={["JS"]} code="js01" />
+					<Card text="DSA using C++/C " tags={["C", "C++"]} code="dsa01" />
 				</div>
 
 				<div className="mt-36">
@@ -113,7 +117,7 @@ function LandingPage() {
 					</span>
 					<div className="flex justify-center items-center p-2 ">
 						<img
-							src="https://cdn.discordapp.com/attachments/1242374647035592705/1244235539880874104/image.png?ex=66546025&is=66530ea5&hm=ecad8cec42f235422d0043af15615386cb4d5dbb798ec38af4ea332f5c28a5b2&"
+							src="Roadmap.png"
 							alt=""
 							className="mt-16 w-3/5 border-4 border-purple-800 rounded-lg shadow-2xl"
 						/>
@@ -131,7 +135,7 @@ function LandingPage() {
 						<div className="flex flex-col items-center justify-center mt-16">
 							<div className=" rounded-full flex items-center justify-center">
 								<img
-									src="https://cdn.discordapp.com/attachments/852810452270710804/1244350989385990284/WhatsApp_Image_2024-05-26_at_18.50.33_d742cbb2.jpg?ex=6654cbaa&is=66537a2a&hm=d2c66b3fc5e5764cd57443f3e7820697e8c8b2b58fd22c1342ebbe12ea2c59dd&"
+									src="mishra.jpg"
 									alt=""
 									className="rounded-full border-4 border-gray-300 h-60 w-60 shadow-2xl"
 								/>
@@ -158,7 +162,7 @@ function LandingPage() {
 						<div className="flex flex-col items-center justify-center mt-16">
 							<div className=" rounded-full flex items-center justify-center">
 								<img
-									src="https://cdn.discordapp.com/attachments/852810452270710804/1244357447448133722/9k.png?ex=6654d1ae&is=6653802e&hm=3ece0e43a608ff42bbbc3b59beb01077c5c91e2e11a409a5f57529ea1092ecc6&"
+									src="/prakhar.png"
 									alt=""
 									className="rounded-full border-4  border-gray-300 h-60 w-60 shadow-2xl"
 								/>
@@ -185,7 +189,7 @@ function LandingPage() {
 						<div className="flex flex-col items-center justify-center mt-16">
 							<div className=" rounded-full flex items-center justify-center">
 								<img
-									src="https://cdn.discordapp.com/attachments/614886048354271235/1244358137440370718/1692214950711.png?ex=6654d253&is=665380d3&hm=51291b1a80767f963469718ea193774a0fc9f142502ecbaf60f1f70f0f66bba6&"
+									src="/Abhishek.png"
 									alt=""
 									className="rounded-full border-4 border-gray-300 h-60 w-60 shadow-2xl"
 								/>
@@ -212,7 +216,7 @@ function LandingPage() {
 						<div className="flex flex-col items-center justify-center mt-16">
 							<div className=" rounded-full flex items-center justify-center">
 								<img
-									src="https://cdn.discordapp.com/attachments/1179478313245343774/1244358664219918366/WhatsApp_Image_2024-05-26_at_18.39.08_774887e7.jpg?ex=6654d2d0&is=66538150&hm=e6e7ec07f9b029c25edd12b890237d91543e93272d105673ae98e55648a857b8&"
+									src="/priyanshu.jpeg"
 									alt=""
 									className="rounded-full border-4 border-gray-300 h-60 w-60 shadow-2xl"
 								/>
@@ -241,7 +245,6 @@ function LandingPage() {
 				<footer className="mt-40 bg-opacity-30 border-t-2 border-white bg-black py-12">
 					<div className="p-4 text-center font-poppins  text-xl">
 						© 2024 All Rights Reserved.
-						
 					</div>
 				</footer>
 			</div>
