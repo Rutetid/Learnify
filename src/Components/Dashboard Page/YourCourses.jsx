@@ -1,29 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, {useContext, useEffect, useState } from "react";
 import Sidebar from "../Sidebar/Sidebar";
 import YourCoursesCard from "./YourCoursesCard";
 import fetchCourses from "../../utils/fetchCourses";
 import fetchUser from "../../utils/fetchUser";
 import Loading from "../Loader/Loading";
+import { UserContext } from "../../Context/UserContext";
 
 const YourCourses = () => {
 
+	const { user, allCourses } = useContext(UserContext);
+
 	const [userCourses, setUserCourses] = useState(null);
+
 
 	useEffect(() => {
 		getCourses();
 	}, [])
 
 	async function getCourses() {
-		const temp = await fetchUser();
-		if (!temp) {
+		if (!user && localStorage.getItem('isLogged') === 'false') {
 			navigate('/login');
 			return;
 		}
-		const allCourses = await fetchCourses();
 		const userSelection = allCourses.filter((course) => {
-			return temp.courses?.some((userCourse) => userCourse.courseCode === course.code);
+			return user.courses?.some((userCourse) => userCourse.courseCode === course.code);
 		});
-		const userProgressArray = temp.courses;
+		const userProgressArray = user.courses;
 		const newUserSelection = userSelection.map((course, index) => {
 			const userProgressFind = userProgressArray.find((userProgress) => userProgress.courseCode === course.code);
 			return {

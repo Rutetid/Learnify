@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import page from './style.module.css'
 import supabase from '../../utils/supabase.js'
 import { Link, useNavigate } from 'react-router-dom'
-import fetchUser from '../../utils/fetchUser.js';
+import { UserContext } from '../../Context/UserContext'
+import fetchUser from '../../utils/fetchUser.js'
 
 export default function LoginPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+
+    const { user, setUser } = useContext(UserContext);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -18,16 +21,16 @@ export default function LoginPage() {
         if (error) {
             alert(error.message);
         } else {
+            localStorage.setItem('isLogged', 'true');
+            setUser(await fetchUser());
             navigate('/dashboard');
         }
     }
 
     useEffect(() => {
-        async function checkUser() {
-            const user = await fetchUser();
-            if(user) navigate('/dashboard');
+        if (localStorage.getItem('isLogged') === 'true') {
+            navigate('/dashboard');
         }
-        checkUser();
     }, []);
 
     return (

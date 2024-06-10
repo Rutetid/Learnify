@@ -1,34 +1,59 @@
 import React from "react";
 import baloon from "../../assets/baloon.svg";
 import Course_progress from "./Course_progress";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import fetchUser from "../../utils/fetchUser";
 import fetchCourses from "../../utils/fetchCourses";
 import { Link, useNavigate } from "react-router-dom";
 import Loading from "../Loader/Loading";
+import { UserContext } from "../../Context/UserContext";
 
 
 const Dashboard_Middle = () => {
 
-	const [user, setUser] = useState(null);
+	// const [user, setUser] = useState(null);
+	const { user, allCourses } = useContext(UserContext);
 	const [userCourse, setUserCourse] = useState(null);
 	const [courseRemaining, setCourseRemaining] = useState(null);
 	const navigate = useNavigate();
 
 	useEffect(() => {
 		async function getUser() {
-			const temp = await fetchUser();
-			if (!temp) {
-				navigate('/login');
-				return;
-			}
-			setUser(temp);
-			if (temp?.courses?.length > 0 || temp.courses !== null) {
-				const allCourses = await fetchCourses();
+			// const temp = await fetchUser();
+			// if (!temp) {
+			// 	navigate('/login');
+			// 	return;
+			// }
+			// setUser(temp);
+			// if (temp?.courses?.length > 0 || temp.courses !== null) {
+			// 	const allCourses = await fetchCourses();
+			// 	const userSelection = allCourses.filter((course) => {
+			// 		return temp.courses?.some((userCourse) => userCourse.courseCode === course.code);
+			// 	});
+			// 	const userProgressArray = temp.courses;
+			// 	const newUserSelection = userSelection.map((course, index) => {
+			// 		const userProgressFind = userProgressArray.find((userProgress) => userProgress.courseCode === course.code);
+			// 		return {
+			// 			code: course.code,
+			// 			course: course.course,
+			// 			courseTitle: course.courseTitle,
+			// 			progress: userProgressFind.progress
+			// 		}
+			// 	});
+			// 	const userIncompleteCourses = newUserSelection.filter((course) => {
+			// 		return course.progress !== course.course.length;
+			// 	});
+			// 	setUserCourse(newUserSelection);
+			// 	setCourseRemaining(userIncompleteCourses);
+			// 	console.log(userIncompleteCourses);
+			// }
+			console.log(user, allCourses);
+			if(!user || !allCourses) return;
+			if (user?.courses?.length > 0 || user.courses !== null) {
 				const userSelection = allCourses.filter((course) => {
-					return temp.courses?.some((userCourse) => userCourse.courseCode === course.code);
+					return user.courses?.some((userCourse) => userCourse.courseCode === course.code);
 				});
-				const userProgressArray = temp.courses;
+				const userProgressArray = user.courses;
 				const newUserSelection = userSelection.map((course, index) => {
 					const userProgressFind = userProgressArray.find((userProgress) => userProgress.courseCode === course.code);
 					return {
@@ -43,11 +68,10 @@ const Dashboard_Middle = () => {
 				});
 				setUserCourse(newUserSelection);
 				setCourseRemaining(userIncompleteCourses);
-				console.log(userIncompleteCourses);
 			}
 		}
 		getUser();
-	}, []);
+	}, [user, allCourses]);
 
 	return (
 		<div className="bg-dashboard flex flex-col w-50vw  ml-20vw min-h-screen ">
@@ -90,21 +114,21 @@ const Dashboard_Middle = () => {
 							<>
 								{!userCourse && (
 									<>
-										
-											
-											<Link
-												to="/all-courses"
-												className="bg-purple-dark w-80  mt-10 ml-4 flex justify-center items-center text-white font-bold py-2 px-4 rounded cursor-pointer"
-											>
-												Start a Course
-											</Link>
+
+
+										<Link
+											to="/all-courses"
+											className="bg-purple-dark w-80  mt-10 ml-4 flex justify-center items-center text-white font-bold py-2 px-4 rounded cursor-pointer"
+										>
+											Start a Course
+										</Link>
 									</>
 								)}
 							</>
 						)}
 					</div>
-					{userCourse?.length > 3 && (<Link to="/your-courses"  className=" font-poppins font-semibold text-sm text-right ">
-						view all -&gt;{" "} 
+					{userCourse?.length > 3 && (<Link to="/your-courses" className=" font-poppins font-semibold text-sm text-right ">
+						view all -&gt;{" "}
 					</Link>)}
 
 					{userCourse?.length > 0 && (

@@ -5,19 +5,26 @@ import YourCourses from "./Components/Dashboard Page/YourCourses";
 import { Routes, Route } from "react-router-dom";
 import LoginPage from "./Components/Login Page/LoginPage";
 import RegisterPage from "./Components/Register Page/RegisterPage";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import fetchUser from "./utils/fetchUser";
 import Roadmap from "./Components/RoadMap Page/Roadmap";
+import {UserContext} from './Context/UserContext'
+import fetchCourses from "./utils/fetchCourses";
 
 function App() {
-	// State to store user information (null initially)
-	const [user, setUser] = useState(null);
+
+	const userState = useContext(UserContext);
+
+	// const [user, setUser] = useState(null);
 
 	// Fetch user data on component mount
 	useEffect(() => {
 		const getUser = async () => {
 			const fetchedUser = await fetchUser();
-			setUser(fetchedUser);
+			userState.setUser(fetchedUser);
+			const allCourses = await fetchCourses();
+			userState.setAllCourses(allCourses);
+			localStorage.setItem('isLogged', fetchedUser ? 'true' : 'false');
 		};
 
 		getUser();
@@ -26,10 +33,10 @@ function App() {
 	return (
 		<>
 			<Routes>
-				<Route path="/" element={<LandingPage user={user} />} />
-				<Route path="/dashboard" element={<Dashboard user={user} />} />
-				<Route path='/login' element={<LoginPage user={user} />} />
-				<Route path='/register' element={<RegisterPage user={user} />} />
+				<Route path="/" element={<LandingPage />} />
+				<Route path="/dashboard" element={<Dashboard />} />
+				<Route path='/login' element={<LoginPage />} />
+				<Route path='/register' element={<RegisterPage />} />
 				<Route path='/all-courses' element={<AllCourses />} />
 				<Route path='/your-courses' element={<YourCourses />} />
 				<Route path='/roadmap/:courseCode' element={<Roadmap />} />

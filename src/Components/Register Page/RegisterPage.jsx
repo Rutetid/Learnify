@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import supabase from '../../utils/supabase'
 
-export default function RegisterPage({ user }) {
+export default function RegisterPage() {
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -12,7 +12,14 @@ export default function RegisterPage({ user }) {
     const [terms, setTerms] = useState(false)
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if(localStorage.getItem('isLogged') === 'true'){
+            navigate('/dashboard');
+        }
+    })
     
+    // Form Validation
     const handleSubmit = async (e) => {
         e.preventDefault()
         if (username.includes(' ')) {

@@ -15,7 +15,6 @@ function Sidebar() {
 		const bgOver = document.getElementById(page.btnOver);
 		const texts = document.querySelectorAll('.sidebar-text');
 		const imgs = document.querySelectorAll('.linkbtn img');
-		console.log(imgs);
 		switch (path) {
 			case "/dashboard":
 
