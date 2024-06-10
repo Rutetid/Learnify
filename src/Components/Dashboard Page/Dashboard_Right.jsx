@@ -1,25 +1,21 @@
-import React, { useEffect, useState } from "react";
-import pfp from "../../assets/pfp.svg";
+import React, { useEffect, useState, useContext } from "react";
 import dropdown from "../../assets/dropdown.svg";
 import fetchUser from "../../utils/fetchUser";
 import { useNavigate } from "react-router-dom";
 import supabase from "../../utils/supabase";
+import { UserContext } from "../../Context/UserContext";
 
 const Dashboard_Right = () => {
 
-	const [user, setUser] = useState(null);
+	const { user, setUser } = useContext(UserContext);
+
 	const navigate = useNavigate();
 	const [userModal, setUserModal] = useState(false);
 
 	useEffect(() => {
-		async function getUser() {
-			const temp = await fetchUser();
-			setUser(temp);
-			if (!temp) {
-				navigate('/login');
-			}
+		if (localStorage.getItem('isLogged') === 'false' || !localStorage.getItem('isLogged')) {
+			navigate('/login');
 		}
-		getUser();
 	}, []);
 
 	const handleModal = () => {
@@ -28,6 +24,8 @@ const Dashboard_Right = () => {
 
 	const handleLogout = async () => {
 		await supabase.auth.signOut();
+		localStorage.setItem('isLogged', 'false');
+		setUser(null);
 		navigate('/login');
 	}
 

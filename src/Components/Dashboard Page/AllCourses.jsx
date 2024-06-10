@@ -1,23 +1,21 @@
 import Sidebar from "../Sidebar/Sidebar";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import AllCoursesCard from "./AllCoursesCard";
 import fetchCourses from "../../utils/fetchCourses";
 import fetchUser from "../../utils/fetchUser";
 import Loading from "../Loader/Loading";
+import { UserContext } from "../../Context/UserContext";
 
 
 const AllCourses = () => {
-	const [allCourses, setAllCourses] = useState(null);
+	const {user, allCourses } = useContext(UserContext);
 	const [userCourses, setUserCourses] = useState(null);
 
 	useEffect(() => {
 		async function courseFetch() {
-			const user = await fetchUser();
-			const allCoursesArray = await fetchCourses();
-			const temp2 = allCoursesArray.filter((course) => {
+			const temp2 = allCourses.filter((course) => {
 				return user.courses?.some((userCourse) => userCourse.courseCode === course.code);
 			});
-			setAllCourses(allCoursesArray);
 			let userProgress = [];
 			if (user.courses) {
 				const userProgress = user.courses.map((course) => {

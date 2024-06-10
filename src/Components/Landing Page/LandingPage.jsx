@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useContext } from "react";
 import hero from "../../assets/hero.svg";
 import { Link, useNavigate } from "react-router-dom";
 import Card from "./Card";
@@ -6,10 +6,13 @@ import twitter from "../../assets/twitter.svg";
 import github from "../../assets/github.svg";
 import linkedin from "../../assets/linkedin.svg";
 import page from "./style.module.css";
+import { UserContext } from "../../Context/UserContext";
 
-function LandingPage({ user }) {
+function LandingPage() {
 	const navigate = useNavigate();
 
+	const { user } = useContext(UserContext);
+	
 	return (
 		<div
 			className="bg-gradient-to-b from-gradient-white to-gradient-purple"
